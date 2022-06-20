@@ -7,11 +7,24 @@ function newFlight(req,res){
 }
 
 function create(req,res){
-  console.log('it works')
   console.log("form data:", req.body)
+  Flight.create(req.body)
+  .then(flight =>{
+    res.redirect('/flights/new')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/flights/new')
+    })
+}
+
+function index(req,res){
+  console.log('this works')
+
 }
 
 export{
   newFlight as new,
   create,
+  index,
 }
