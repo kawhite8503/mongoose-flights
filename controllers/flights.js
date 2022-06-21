@@ -4,6 +4,10 @@ function newFlight(req,res){
   res.render('flights/new', {
     title: 'Add Flight'
   })
+  // if(req.body.departs === ''){
+  //   req.body.departs = new Date().getFullYear() + 1
+ //ABOVE IS NOT WORKING
+  // }
 }
 
 function create(req,res){
