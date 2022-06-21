@@ -13,6 +13,8 @@ router.get('/new', flightsCtrl.new)
 //POST localhost:3000/flights
 router.post('/', flightsCtrl.create)
 
+router.get('/:id', flightsCtrl.show)
+
 export {
   router
 }
