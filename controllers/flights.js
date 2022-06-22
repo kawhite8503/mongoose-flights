@@ -105,6 +105,10 @@ function update(req,res) {
     })
 }
 
+function createTicket(req,res) {
+  console.log('REQ.BODY', req.body)
+}
+
 export{
   newFlight as new,
   create,
@@ -113,4 +117,5 @@ export{
   deleteFlight as delete,
   edit,
   update,
+  createTicket,
 }
