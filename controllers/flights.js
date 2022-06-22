@@ -1,5 +1,12 @@
 import { Flight } from "../models/flight.js"
 
+// function sortFlights(req,res){
+//   flight.departs.forEach(flight => {
+//     if(flight.departs)
+//   })
+
+// }
+
 function newFlight(req,res){
   const newFlight = new Flight()
   const defaultDepart = newFlight.departs
@@ -7,6 +14,10 @@ function newFlight(req,res){
   res.render('flights/new', {
     title: 'Add Flight',
     departs: formattedDepart
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/flights')
   })
 }
 
