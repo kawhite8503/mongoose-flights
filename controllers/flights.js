@@ -1,3 +1,4 @@
+import methodOverride from "method-override"
 import { Flight } from "../models/flight.js"
 
 // function sortFlights(req,res){
@@ -40,7 +41,7 @@ function index(req,res){
   Flight.find({})
   .then(flights => {
     flights.forEach(flight => {
-      if(flight.departs.toISOString() < new Date().toISOString()){
+      if(flight.departs?.toISOString() < new Date()?.toISOString()){
       flight.color = 'red'
     }
   })
@@ -101,12 +102,23 @@ function update(req,res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/flights')
+    res.redirect('/')
     })
 }
 
 function createTicket(req,res) {
-  console.log('REQ.BODY', req.body)
+  Flight.findById(req.params.id)
+  .then(flight => {
+    flight.tickets.push(req.body)
+    flight.save()
+      .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+    })
 }
 
 export{
