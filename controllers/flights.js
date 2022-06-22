@@ -1,13 +1,13 @@
 import { Flight } from "../models/flight.js"
 
 function newFlight(req,res){
+  const newFlight = new Flight()
+  const defaultDepart = newFlight.departs
+  const formattedDepart = defaultDepart.toISOString().slice(0,16)
   res.render('flights/new', {
-    title: 'Add Flight'
+    title: 'Add Flight',
+    departs: formattedDepart
   })
-  // if(req.body.departs === ''){
-  //   req.body.departs = new Date().getFullYear() + 1
- //ABOVE IS NOT WORKING
-  // }
 }
 
 function create(req,res){
@@ -28,16 +28,20 @@ function create(req,res){
 function index(req,res){
   Flight.find({})
   .then(flights => {
-    res.render('flights/index', {
-    flights: flights,
-    title: 'All Flights'
+    flights.forEach(flight => {
+      if(flight.departs.toISOString() < new Date().toISOString()){
+      flight.color = 'red'
+    }
+  })
+  res.render('flights/index', {
+  flights: flights,
+  title: 'All Flights'
   })
 })
   .catch(err => {
     console.log(err)
     res.redirect('/')
     })
-
 }
 
 function show(req,res){
