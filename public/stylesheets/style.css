@@ -1,13 +1,30 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #746273;
 }
+
+#a-edit {
+  color: #a37882;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.heading {
+  font-size: 18px;
+  padding: 4px 0;
+  font-weight: bold;
+}
+
+.flight-details {
+  color: #827991;
+}
+
+
 * {
-  box-sizing: border-box;
   font-family: Helvetica;
   color: #424748;
 }
@@ -24,12 +41,14 @@ body {
 
 body > nav {
   grid-area: nav;
-  background-color: #B8C0C2;
+  background-color: #a8b8d4;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0 20px 0 30px;
 }
+
+
 
 nav > img {
   width: 34px;
@@ -42,13 +61,8 @@ body > main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #E8ECEB;
+  background-color: #e9e8ec;
   padding: 20px;
-  overflow-y: scroll;
-}
-
-body > main h1:first-child {
-  margin-bottom: 50px;
 }
 
 nav > a {
@@ -76,9 +90,8 @@ nav > a.active {
 #new-form *,
 #add-review-form *,
 #add-performer-form * {
-  font-size: 20px;
-  padding: 5px;
-  border-radius: 5px;
+  font-size: 16px;
+  /* padding: 5px; */
 }
 
 #new-form input[type="submit"] {
@@ -88,7 +101,7 @@ nav > a.active {
 }
 
 table {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 table thead th {
@@ -110,7 +123,7 @@ table td {
   background-color: #B8C0C2;
   padding: 4px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #list a:hover {
@@ -129,10 +142,12 @@ table td {
 
 #add-review-form,
 #add-performer-form {
-  display: grid;
   grid-template-columns: auto auto;
   grid-gap: 1rem;
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #add-review-form input[type="submit"],
@@ -147,9 +162,47 @@ ul {
   list-style: none;
 }
 
-li {
-  font-weight: bold;
-}
 .red{
   color: red;
+}
+
+
+#add-to-meals {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-meals-nav {
+  font-size: 14px;
+  margin: 15px 5px;
+  padding: 1px;
+}
+.add-meals-nav2 {
+  font-size: 14px;
+  margin: 15px 5px;
+}
+
+#zero-tickets {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  font-style: italic;
+  color: #746273
+}
+
+#ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#meal-header {
+    margin: 30px 0 4px 0;
+    font-weight: 500;
+}
+
+.selected-food {
+  font-size: 14px;
+  font-style: italic;
 }

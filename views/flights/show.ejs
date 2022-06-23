@@ -4,35 +4,34 @@
 
 <main>
   <h1><%= title %></h1>
-  <section>
-    <div>Airline: </div>
-    <div><%= flight.airline %></div><br>
-    <div>Airport: </div>
-    <div><%= flight.airport %></div><br>
-    <div>Flight Number: </div>
-    <div><%= flight.flightNo %></div><br>
-    <div>Departure Date: </div>
-    <div><%= flight.departs %></div><br>
+  <section class="inline">
+    <div class="heading">Airline: </div>
+    <div class="flight-details"><%= flight.airline %></div><br>
+    <div class="heading">Airport: </div>
+    <div class="flight-details"><%= flight.airport %></div><br>
+    <div class="heading">Flight Number: </div>
+    <div class="flight-details"><%= flight.flightNo %></div><br>
+    <div class="heading">Departure Date: </div><br>
+    <div class="flight-details"><%= flight.departs %></div><br>
   </section>
-  <a href="/flights/<%= flight._id %>/edit">Edit</a>
+  <a href="/flights/<%= flight._id %>/edit" id="a-edit">Edit Flight</a>
 <br>
-  <div>Meal:</div><br>
+  <div id="meal-header" class="heading">Meal:</div>
   <ul>
     <% flight.meal.forEach(meal => { %>
-      <li><%= meal.meal %></li>
+      <li class="selected-food"><%= meal.meal %></li>
     <% }) %>
   </ul>
-
+  <form id="add-to-meals"action="/flights/<%= flight._id %>/meals " method="post">
+    <select class="add-meals-nav" name="mealId">
+      <% meals.forEach(meal => { %>
+      <option value="<%= meal._id %>"><%= meal.meal %> </option>
+      <% }) %>
+    </select>
+    <button class="add-meals-nav2" type="submit">Add Meal</button>
+  </form>
 </main>
-<form id="add-to-meals"action="/flights/<%= flight._id %>/meals " method="post">
-  <select name="mealId">
-    <% meals.forEach(meal => { %>
-    <option value="<%= meal._id %>"><%= meal.meal %> </option>
-    <% }) %>
-  </select>
-  <button type="submit">Add Meal</button>
-</form>
-<h2>Add ticket</h2>
+<h2 id="ticket-header">Add ticket</h2>
   <form id="add-review-form" action="/flights/<%= flight._id %>/tickets" method="POST">
     <label for="seat-input">Seat: (A1-F99)</label>
     <input name="seat" id="seat-input" required pattern="[A-F][1-9]\d?">
@@ -65,7 +64,7 @@
       </tbody>
     </table>
   <% } else{ %> 
-    <h2>No Tickets Yet</h2>
+    <h2 id="zero-tickets">* No Tickets Yet *</h2>
   <% } %> 
 
 
